@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="adobe-dc-view"></div>
+    <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+    <script type="text/javascript">
+        (function(){
+            document.addEventListener("adobe_dc_view_sdk.ready", function () {
+                const params = new URLSearchParams(window.location.search);
+                if(!params.has('pdf')){
+                    alert("PDF url not found!");
+                    return;
+                }
+                var fileName="Document.pdf";
+                if(params.has('filename')){
+                    fileName=params.get('filename')
+                }
+                var adobeDCView = new AdobeDC.View({ clientId: "4841d6824a9b4914bed3e34f3ba9e7a2", divId: "adobe-dc-view" });
+                adobeDCView.previewFile({
+                    content: { location: { url: params.get('pdf') } },
+                    metaData: { fileName: fileName }
+                }, {showAnnotationTools: false, dockPageControls: false, showDownloadPDF: false, 
+                showPrintPDF: false});
+            });
+        })()
+        
+    </script>
+    
+</body>
+
+</html>
