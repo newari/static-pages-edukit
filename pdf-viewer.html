@@ -23,7 +23,7 @@
                 if(params.has('filename')){
                     fileName=params.get('filename')
                 }
-                var adobeDCView = new AdobeDC.View({ clientId: "4841d6824a9b4914bed3e34f3ba9e7a2", divId: "adobe-dc-view" });
+                var adobeDCView = new AdobeDC.View({ clientId: "447fecc051d2420384f909b26fb83000", divId: "adobe-dc-view" });
                 adobeDCView.previewFile({
                     content: { location: { url: params.get('pdf') } },
                     metaData: { fileName: fileName }
