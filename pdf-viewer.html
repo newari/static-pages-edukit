@@ -28,11 +28,15 @@
                 if(params.has('filename')){
                     fileName=params.get('filename')
                 }
+                var downloadable=false;
+                if(params.has('d')){
+                    downloadable=Boolean(params.get('d'));
+                }
                 var adobeDCView = new AdobeDC.View({ clientId: "447fecc051d2420384f909b26fb83000", divId: "adobe-dc-view" });
                 adobeDCView.previewFile({
                     content: { location: { url: params.get('pdf') } },
                     metaData: { fileName: fileName }
-                }, {showAnnotationTools: false, dockPageControls: false, showDownloadPDF: false, 
+                }, {showAnnotationTools: false, dockPageControls: false, showDownloadPDF: downloadable, 
                 showPrintPDF: false});
             });
         })()
